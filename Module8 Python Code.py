@@ -15,6 +15,23 @@ class character:
 
     def profile(self):
         return self.nickname, self.weapons, self. weaknesses
+     
+        '''method '''
+    def check_equipment(self, taskL, state):
+        miss = 0
+        for item in range(len(taskL)):
+            if taskL[item] not in self.weapons:
+                print('{} is not ready'.format(taskL[item]))
+                miss += 1
+                
+        #outside a for loop
+        if miss == 0:
+           print('All items are prepared.')
+        if state in self.weaknesses:
+            print("Player's {} condition is not allowed")
+        else:
+            print("Player is in good condition")
+        
 
 player1 = character('','','')
 player1.nickname = 'Dragon Slayer'
@@ -34,14 +51,16 @@ option = input("Please enter one of the following options (1-3)")
 if option == '1':
     task = ['rope', 'coat', 'first aid kit']
     not_allowed_state = 'slow'
-    print("You will need Coat and first aid kit, cannot have", not_allowed_state)
+    #print("You will need Coat and first aid kit, cannot have", not_allowed_state)
 if option == '2':
     task = ['pan', 'groceries']
-    cannot_size = 'small'
-    print ("Cannot have small")
+    #cannot_size = 'small'
+    #print ("Cannot have small")
+    not_allowed_state = 'small'
 if option == '3':
     task = ['pen', 'paper', 'idea',]
-    confusion = 'confusion'
-    print("Cannot have confusions")
+    #confusion = 'confusion'
+    not_allowed_state = 'confusion'
+    #print("Cannot have confusions")
 
-
+player1.check_euipment(task, not_allowed_state)
